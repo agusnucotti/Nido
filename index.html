@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="google-site-verification" content="7fo41tbg3GE2zP5GZZHm9SAJNYqykrxW7tFe3uf6aVU" />
+  <title>Nido — Sillones de autor</title>
+
+  <!-- Tipografías de Google Fonts: una serif elegante para títulos y una sans simple para textos -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <!-- Nuestro archivo de estilos -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ===== MENÚ ===== -->
+  <header class="nav">
+    <a href="#inicio" class="logo">Nido</a>
+
+    <!-- Botón hamburguesa: solo se ve en celular -->
+    <button class="menu-boton" aria-label="Abrir menú" aria-expanded="false" aria-controls="menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <nav id="menu" class="menu">
+      <ul>
+        <li><a href="#inicio">Inicio</a></li>
+
+        <!-- Productos con submenú desplegable -->
+        <li class="desplegable">
+          <a href="#productos" data-ir="todos">Productos <span class="flecha">▾</span></a>
+          <ul class="submenu">
+            <li><a href="#productos" data-ir="sillones">Sillones</a></li>
+            <li><a href="#productos" data-ir="sofa-cama">Sofás cama</a></li>
+            <li><a href="#productos" data-ir="todos" class="ver-todos">Ver todos</a></li>
+          </ul>
+        </li>
+
+        <li><a href="#contacto">Contacto</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- ===== PORTADA (HERO) ===== -->
+  <section class="hero" id="inicio">
+    <div class="hero-texto">
+      <p class="etiqueta">Diseño y fabricación propia</p>
+      <h1>Sillones hechos para quedarse</h1>
+      <p>Tapizados a mano en nuestro taller. Envío sin cargo en todo AMBA.</p>
+      <a href="#productos" class="boton" data-ir="todos">Ver productos</a>
+    </div>
+    <div class="hero-imagen">
+      <!-- Poné tu foto en la carpeta img con este nombre -->
+      <img src="img/hero.jpg" alt="Sillón esquinero color camel en un living luminoso">
+    </div>
+  </section>
+
+  <!-- ===== CATEGORÍAS ===== -->
+  <section class="seccion" id="coleccion">
+    <p class="etiqueta">Elegí tu estilo</p>
+    <h2>Nuestra colección</h2>
+
+    <div class="categorias">
+      <article class="tarjeta">
+        <img src="img/dos-cuerpos.jpg" alt="Sillón bajo acolchado de pana verde salvia">
+        <div class="tarjeta-texto">
+          <h3>Dos y tres cuerpos</h3>
+          <p>Líneas simples y almohadones mullidos para livings de cualquier tamaño.</p>
+          <a href="#productos" class="link" data-ir="sillones">Ver modelos</a>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- ===== NOSOTROS (texto + imagen) ===== -->
+  <section class="split" id="nosotros">
+    <div class="split-imagen">
+      <img src="img/taller.jpg" alt="Sillón modular grande color arena en un living con vista a la ciudad">
+    </div>
+    <div class="split-texto">
+      <p class="etiqueta">Desde nuestro taller</p>
+      <h2>Hechos para durar</h2>
+      <p>Usamos estructuras de madera maciza, espumas de alta densidad y telas resistentes al uso diario. Cada sillón se arma a pedido, así que podés elegir medidas y colores.</p>
+      <a href="#contacto" class="boton">Conocé el proceso</a>
+    </div>
+  </section>
+
+  <!-- ===== CATÁLOGO DE PRODUCTOS CON FILTROS ===== -->
+  <section class="seccion fondo-oscuro" id="productos">
+    <p class="etiqueta">Catálogo</p>
+    <h2>Nuestros productos</h2>
+
+    <!-- Botones de filtro: el data-filtro tiene que coincidir con el data-categoria de los productos -->
+    <div class="filtros">
+      <button class="filtro activo" data-filtro="todos">Todos</button>
+      <button class="filtro" data-filtro="sillones">Sillones</button>
+      <button class="filtro" data-filtro="sofa-cama">Sofás cama</button>
+    </div>
+
+    <div class="productos">
+      <!-- Sillones -->
+      <!-- La descripción está escondida en la tarjeta: se muestra en la ficha al tocar el producto -->
+      <div class="producto" data-categoria="sillones" tabindex="0">
+        <img src="img/producto1.jpg" alt="Sillón Duna">
+        <p class="categoria">Sillón</p>
+        <h4>Sillón Duna</h4>
+        <p class="precio">$ 890.000</p>
+        <p class="descripcion" hidden>Sillón modular con chaise longue, tapizado en pana color chocolate. Sus módulos se pueden reacomodar para armarlo a la izquierda o a la derecha. Incluye almohadones de respaldo sueltos, ideales para tirarse a ver una peli.</p>
+      </div>
+      <div class="producto" data-categoria="sillones" tabindex="0">
+        <img src="img/producto4.jpg" alt="Sillón Terra">
+        <p class="categoria">Sillón</p>
+        <h4>Sillón Terra</h4>
+        <p class="precio">$ 760.000</p>
+        <p class="descripcion" hidden>Sillón de pana con costuras en franjas verticales y patas metálicas. Viene con un puff a juego que se usa como apoyapiés o se suma al asiento para armar un esquinero.</p>
+      </div>
+      <div class="producto" data-categoria="sillones" tabindex="0">
+        <img src="img/producto5.jpg" alt="Sillón Alba">
+        <p class="categoria">Sillón</p>
+        <h4>Sillón Alba</h4>
+        <p class="precio">$ 980.000</p>
+        <p class="descripcion" hidden>Sillón de tres cuerpos en bouclé color crudo, con formas redondeadas y brazos curvos. Un diseño suave y luminoso que le da calidez a cualquier living.</p>
+      </div>
+
+      <!-- Sofás cama -->
+      <div class="producto" data-categoria="sofa-cama" tabindex="0">
+        <img src="img/producto8.jpg" alt="Sofá cama Nube">
+        <p class="categoria">Sofá cama</p>
+        <h4>Sofá cama Nube</h4>
+        <p class="precio">$ 1.050.000</p>
+        <p class="descripcion" hidden>Sofá cama con base de madera maciza y colchón tapizado en tela clara. De día es un sillón cómodo con almohadones y rolls; de noche, una cama lista para recibir visitas.</p>
+      </div>
+      <div class="producto" data-categoria="sofa-cama" tabindex="0">
+        <img src="img/producto9.jpg" alt="Sofá cama Siesta">
+        <p class="categoria">Sofá cama</p>
+        <h4>Sofá cama Siesta</h4>
+        <p class="precio">$ 940.000</p>
+        <p class="descripcion" hidden>Sofá cama de dos cuerpos en pana verde inglés, con brazos redondeados. La cama se despliega hacia adelante en un solo movimiento, sin sacar los almohadones.</p>
+      </div>
+    </div>
+
+    <!-- Ficha del producto: el script la completa con los datos de la tarjeta que tocaron -->
+    <dialog class="ficha" id="ficha">
+      <button class="ficha-cerrar" aria-label="Cerrar">&times;</button>
+      <img class="ficha-imagen" src="" alt="">
+      <div class="ficha-texto">
+        <p class="categoria ficha-categoria"></p>
+        <h3 class="ficha-nombre"></h3>
+        <p class="precio ficha-precio"></p>
+        <p class="ficha-descripcion"></p>
+        <a href="https://www.instagram.com/uztahome/" target="_blank" rel="noopener" class="boton ficha-consultar">Consultar</a>
+      </div>
+    </dialog>
+  </section>
+
+  <!-- ===== AYUDA: ENVÍOS ===== -->
+  <section class="seccion" id="envios">
+    <h2>Envíos</h2>
+
+    <div class="consejos">
+      <article class="consejo">
+        <h3>AMBA sin cargo</h3>
+        <p>Si estás en Capital Federal o el Gran Buenos Aires, el envío es gratis. Coordinamos con vos el día y la franja horaria, y te lo llevamos hasta adentro de tu casa.</p>
+      </article>
+
+      <article class="consejo">
+        <h3>Resto del país</h3>
+        <p>Enviamos a todo el país por transporte. El costo depende del destino y del tamaño del sillón: escribinos con tu código postal y te pasamos el presupuesto.</p>
+      </article>
+
+      <article class="consejo">
+        <h3>Tiempos de entrega</h3>
+        <p>Cada sillón se fabrica a pedido en nuestro taller. Al confirmar tu compra te decimos la fecha estimada de entrega, y te avisamos cuando esté listo para salir.</p>
+      </article>
+    </div>
+  </section>
+
+  <!-- ===== AYUDA: MEDIOS DE PAGO ===== -->
+  <section class="seccion fondo-oscuro" id="medios-de-pago">
+    <h2>Medios de pago</h2>
+
+    <div class="consejos">
+      <article class="consejo">
+        <h3>Transferencia</h3>
+        <p>Podés pagar por transferencia bancaria. Te pasamos los datos de la cuenta al confirmar el pedido.</p>
+      </article>
+
+      <article class="consejo">
+        <h3>Tarjetas</h3>
+        <p>Aceptamos tarjetas de crédito y débito. Consultanos por las cuotas disponibles.</p>
+      </article>
+
+      <article class="consejo">
+        <h3>Mercado Pago</h3>
+        <p>También podés pagar con Mercado Pago, con dinero en cuenta o con cualquiera de tus tarjetas guardadas.</p>
+      </article>
+    </div>
+  </section>
+
+  <!-- ===== AYUDA: CUIDADO DE TELAS ===== -->
+  <section class="seccion" id="cuidado-telas">
+    <h2>Cuidado de telas</h2>
+
+    <div class="consejos">
+      <article class="consejo">
+        <h3>Todos los días</h3>
+        <p>Aspirá el sillón una vez por semana con el cepillo suave de la aspiradora y sacudí los almohadones para que mantengan su forma. Evitá dejarlo al sol directo, porque con el tiempo destiñe la tela.</p>
+      </article>
+
+      <article class="consejo">
+        <h3>Si se mancha</h3>
+        <p>Actuá rápido: secá con un paño blanco, sin frotar, de afuera hacia adentro. Si hace falta, usá agua tibia con unas gotas de jabón neutro y dejá secar al aire. Nunca uses lavandina ni secador de pelo.</p>
+      </article>
+
+      <article class="consejo">
+        <h3>Según la tela</h3>
+        <p><strong>Pana:</strong> cepillala siempre en el sentido del pelo.</p>
+        <p><strong>Lino:</strong> es normal que se arrugue un poco; se acomoda solo con el uso.</p>
+        <p><strong>Bouclé:</strong> no la cepilles, solo aspirala con suavidad.</p>
+      </article>
+    </div>
+  </section>
+
+  <!-- ===== SUSCRIPCIÓN ===== -->
+  <section class="seccion fondo-oscuro" id="suscripcion">
+    <p class="etiqueta">Novedades</p>
+    <h2>Sumate a la comunidad Nido</h2>
+    <p class="suscripcion-texto">Enterate primero de modelos nuevos y promociones.</p>
+
+    <form class="newsletter">
+      <input type="text" name="nombre" placeholder="Nombre y apellido" aria-label="Nombre y apellido" autocomplete="name" required>
+      <input type="email" name="email" placeholder="Email" aria-label="Email" autocomplete="email" required>
+      <input type="text" name="dni" placeholder="DNI" aria-label="DNI" inputmode="numeric" pattern="[0-9.]{7,10}" title="Solo números, entre 7 y 8 cifras" required>
+      <input type="tel" name="telefono" placeholder="Teléfono" aria-label="Teléfono" autocomplete="tel" required>
+      <button type="submit" class="boton">Suscribirme</button>
+      <p class="newsletter-gracias" hidden>¡Gracias por suscribirte!</p>
+    </form>
+  </section>
+
+  <!-- ===== CONTACTO ===== -->
+  <section class="contacto" id="contacto">
+    <div class="contacto-caja">
+      <p class="etiqueta">Contacto</p>
+      <h2>¿Dudas con las medidas?</h2>
+      <p>Escribinos y te ayudamos a elegir el sillón ideal para tu espacio.</p>
+      <a href="mailto:hola@nido.com" class="boton">Escribinos</a>
+    </div>
+  </section>
+
+  <!-- ===== PIE DE PÁGINA ===== -->
+  <footer class="footer">
+    <div>
+      <a href="#inicio" class="logo">Nido</a>
+      <p>Sillones de autor, hechos en Buenos Aires.</p>
+    </div>
+    <div>
+      <h5>Ayuda</h5>
+      <a href="#envios">Envíos</a>
+      <a href="#medios-de-pago">Medios de pago</a>
+      <a href="#cuidado-telas">Cuidado de telas</a>
+    </div>
+    <div>
+      <h5>Contacto</h5>
+      <a href="mailto:hola@nido.com">hola@nido.com</a>
+      <a href="https://www.instagram.com/uztahome/" target="_blank" rel="noopener">Instagram</a>
+      <a href="#">WhatsApp</a>
+    </div>
+  </footer>
+
+  <!-- Nuestro script (va al final para que el HTML ya esté cargado) -->
+  <script src="script.js"></script>
+</body>
+</html>

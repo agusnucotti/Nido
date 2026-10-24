@@ -1,0 +1,675 @@
+/* ===== VARIABLES DE COLOR =====
+   Cambiando estos valores cambiás los colores de toda la página */
+:root {
+  --crema: #f6efe7;
+  --arena: #e8d8c6;
+  --oliva: #7a7a5c;      /* color de acento, distinto a la referencia */
+  --terracota: #b5734f;
+  --texto: #3b322b;
+  --blanco: #fffdfa;
+}
+
+/* ===== TIPOGRAFÍA DEL LOGO =====
+   El archivo está en la carpeta fonts para que se vea en cualquier compu */
+@font-face {
+  font-family: 'LT Perfume';
+  src: url('fonts/LTPerfume-2.ttf') format('truetype');
+}
+
+/* ===== BASE ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth; /* los links internos se deslizan en vez de saltar */
+}
+
+body {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 300;
+  color: var(--texto);
+  background: var(--crema);
+  line-height: 1.7;
+}
+
+/* Como el menú queda fijo arriba, dejamos lugar para que no tape los títulos */
+section {
+  scroll-margin-top: 80px;
+}
+
+h1, h2, h3, h4 {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 500;
+}
+
+img {
+  width: 100%;
+  display: block;
+  object-fit: cover;
+  background: var(--arena); /* se ve este color mientras no tengas fotos */
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+ul {
+  list-style: none;
+}
+
+/* Textito chico en mayúsculas arriba de los títulos */
+.etiqueta {
+  font-size: 0.7rem;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--terracota);
+  margin-bottom: 8px;
+}
+
+.boton {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 12px 28px;
+  background: var(--oliva);
+  color: var(--blanco);
+  font-size: 0.75rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  border-radius: 30px;
+  transition: background 0.3s;
+}
+
+.boton:hover {
+  background: var(--terracota);
+}
+
+/* ===== MENÚ ===== */
+.nav {
+  position: sticky;  /* queda fijo arriba al hacer scroll */
+  top: 0;
+  z-index: 100;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px 6%;
+  background: var(--crema);
+}
+
+.logo {
+  font-family: 'LT Perfume', 'Cormorant Garamond', serif;
+  font-size: 1.8rem;
+}
+
+.menu > ul {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+
+.menu a {
+  font-size: 0.75rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  transition: color 0.3s;
+}
+
+.menu a:hover {
+  color: var(--terracota);
+}
+
+.flecha {
+  font-size: 0.7rem;
+  margin-left: 2px;
+}
+
+/* --- Submenú desplegable de Productos --- */
+.desplegable {
+  position: relative;
+  padding: 10px 0; /* agranda la zona de hover para que no se cierre al bajar el mouse */
+}
+
+.submenu {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  min-width: 210px;
+  padding: 12px 0;
+  background: var(--blanco);
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(59, 50, 43, 0.12);
+
+  /* Escondido hasta que pasás el mouse */
+  opacity: 0;
+  visibility: hidden;
+  transform: translate(-50%, 8px);
+  transition: opacity 0.25s, transform 0.25s, visibility 0.25s;
+}
+
+.desplegable:hover .submenu,
+.desplegable:focus-within .submenu {
+  opacity: 1;
+  visibility: visible;
+  transform: translate(-50%, 0);
+}
+
+.submenu a {
+  display: block;
+  padding: 8px 24px;
+  font-size: 0.7rem;
+}
+
+.submenu a:hover {
+  background: var(--crema);
+}
+
+.submenu .ver-todos {
+  margin-top: 6px;
+  padding-top: 12px;
+  border-top: 1px solid var(--arena);
+  color: var(--terracota);
+}
+
+/* --- Botón hamburguesa (escondido en compu) --- */
+.menu-boton {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 6px;
+}
+
+.menu-boton span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: var(--texto);
+  transition: transform 0.3s, opacity 0.3s;
+}
+
+/* Cuando el menú está abierto, las tres rayitas forman una X */
+.nav.abierto .menu-boton span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.nav.abierto .menu-boton span:nth-child(2) {
+  opacity: 0;
+}
+
+.nav.abierto .menu-boton span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+/* ===== HERO ===== */
+.hero {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 40px;
+  padding: 40px 6% 80px;
+}
+
+.hero h1 {
+  font-size: 3.5rem;
+  line-height: 1.1;
+  margin-bottom: 16px;
+}
+
+/* El arco: bordes de arriba muy redondeados */
+.hero-imagen img {
+  height: 520px;
+  border-radius: 300px 300px 0 0;
+}
+
+/* ===== SECCIONES GENERALES ===== */
+.seccion {
+  padding: 80px 6%;
+  text-align: center;
+}
+
+.seccion h2 {
+  font-size: 2.6rem;
+  margin-bottom: 48px;
+}
+
+/* ===== CATEGORÍAS ===== */
+.categorias {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+}
+
+.tarjeta {
+  background: var(--blanco);
+  border-radius: 200px 200px 12px 12px;
+  overflow: hidden;
+  text-align: center;
+}
+
+.tarjeta img {
+  height: 280px;
+}
+
+.tarjeta-texto {
+  padding: 24px;
+}
+
+.tarjeta h3 {
+  font-size: 1.6rem;
+}
+
+.tarjeta p {
+  font-size: 0.85rem;
+  margin: 8px 0 16px;
+}
+
+.link {
+  font-size: 0.7rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  border-bottom: 1px solid var(--terracota);
+}
+
+/* ===== NOSOTROS ===== */
+.split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  background: var(--blanco);
+}
+
+.split-imagen img {
+  height: 480px;
+  border-radius: 0 0 240px 0; /* curva solo en una esquina */
+}
+
+.split-texto {
+  padding: 60px 10%;
+}
+
+.split-texto h2 {
+  font-size: 2.4rem;
+  margin-bottom: 16px;
+}
+
+/* ===== PRODUCTOS ===== */
+.fondo-oscuro {
+  background: var(--arena);
+}
+
+/* --- Filtros del catálogo --- */
+.filtros {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  margin: -24px 0 40px;    /* lo acerca al título, que tiene 48px abajo */
+}
+
+.filtro {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.7rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  background: transparent;
+  color: var(--texto);
+  border: 1px solid var(--oliva);
+  padding: 8px 20px;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: background 0.3s, color 0.3s;
+}
+
+.filtro:hover {
+  background: var(--blanco);
+}
+
+.filtro.activo {
+  background: var(--oliva);
+  color: var(--blanco);
+}
+
+/* El script agrega esta clase a los productos que no coinciden */
+.oculto {
+  display: none;
+}
+
+.productos {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+
+.producto img {
+  height: 260px;
+  border-radius: 12px;
+  transition: transform 0.4s;
+}
+
+.producto:hover img {
+  transform: scale(1.03);
+}
+
+.producto .categoria {
+  margin-top: 12px;
+  font-size: 0.65rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--oliva);
+}
+
+.producto h4 {
+  font-size: 1.3rem;
+}
+
+.precio {
+  font-size: 0.85rem;
+  color: var(--terracota);
+}
+
+.producto {
+  cursor: pointer; /* se puede tocar para ver la ficha */
+}
+
+/* --- Ficha del producto (ventana que se abre al tocar uno) --- */
+.ficha {
+  width: min(860px, 92vw);
+  max-height: 90vh;
+  margin: auto;
+  padding: 0;
+  border: none;
+  border-radius: 16px;
+  background: var(--blanco);
+  color: var(--texto);
+  overflow: auto;
+}
+
+/* El script abre la ficha con showModal; recién ahí se arma la grilla */
+.ficha[open] {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.ficha::backdrop {
+  background: rgba(59, 50, 43, 0.6);
+}
+
+.ficha-imagen {
+  height: 100%;
+  min-height: 360px;
+}
+
+.ficha-texto {
+  padding: 48px 40px;
+  text-align: left;
+}
+
+.ficha-nombre {
+  font-size: 2.2rem;
+  line-height: 1.1;
+  margin: 4px 0 8px;
+}
+
+.ficha-precio {
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+}
+
+.ficha-descripcion {
+  font-size: 0.9rem;
+}
+
+.ficha-cerrar {
+  position: absolute;
+  top: 12px;
+  right: 16px;
+  width: 36px;
+  height: 36px;
+  border: none;
+  border-radius: 50%;
+  background: var(--crema);
+  color: var(--texto);
+  font-size: 1.4rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+/* ===== CUIDADO DE TELAS ===== */
+.consejos {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+  text-align: left;
+}
+
+.consejo {
+  background: var(--blanco);
+  padding: 32px;
+  border-radius: 12px;
+}
+
+.consejo h3 {
+  font-size: 1.6rem;
+  margin-bottom: 8px;
+}
+
+.consejo p {
+  font-size: 0.85rem;
+}
+
+.consejo p + p {
+  margin-top: 10px; /* separa las telas en "Según la tela" */
+}
+
+.consejo strong {
+  font-weight: 500;
+  color: var(--terracota);
+}
+
+/* ===== SUSCRIPCIÓN ===== */
+.seccion .suscripcion-texto {
+  margin: -32px 0 32px; /* lo acerca al título, que tiene 48px abajo */
+}
+
+/* Los campos van uno debajo del otro */
+.newsletter {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+  max-width: 420px;
+  margin: 0 auto;
+}
+
+.newsletter input {
+  padding: 14px 18px;
+  border: none;
+  border-radius: 30px;
+  background: var(--blanco);
+  color: var(--texto);
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.85rem;
+}
+
+.newsletter button,
+.newsletter-gracias {
+  justify-self: center;
+}
+
+.newsletter button {
+  border: none;
+  font-family: 'Montserrat', sans-serif;
+  cursor: pointer;
+}
+
+.newsletter-gracias {
+  color: var(--terracota);
+}
+
+/* ===== CONTACTO ===== */
+.contacto {
+  display: flex;
+  justify-content: center;
+  padding: 80px 6% 0;
+}
+
+.contacto-caja {
+  max-width: 520px;
+  text-align: center;
+  background: var(--arena);
+  padding: 90px 50px 60px;
+  border-radius: 260px 260px 0 0;
+}
+
+.contacto-caja h2 {
+  font-size: 2.2rem;
+}
+
+/* ===== FOOTER ===== */
+.footer {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 40px;
+  padding: 50px 6%;
+  background: var(--texto);
+  color: var(--crema);
+  font-size: 0.85rem;
+}
+
+.footer h5 {
+  font-size: 0.75rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+
+.footer a {
+  display: block;
+  margin-bottom: 6px;
+}
+
+
+/* ===== TABLET ===== */
+@media (max-width: 1024px) {
+  .productos {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* ===== CELULAR =====
+   Cuando la pantalla mide menos de 768px, todo pasa a una columna */
+@media (max-width: 768px) {
+  .hero,
+  .split,
+  .categorias,
+  .consejos,
+  .footer {
+    grid-template-columns: 1fr;
+  }
+
+  .productos {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .producto img {
+    height: 200px;
+  }
+
+  /* En celular la ficha muestra la foto arriba y el texto abajo */
+  .ficha[open] {
+    grid-template-columns: 1fr;
+  }
+
+  .ficha-imagen {
+    height: 260px;
+    min-height: 0;
+  }
+
+  .ficha-texto {
+    padding: 28px 24px;
+  }
+
+  .hero h1 {
+    font-size: 2.4rem;
+  }
+
+  .hero-imagen img {
+    height: 380px;
+  }
+
+  /* --- Menú en celular --- */
+  .menu-boton {
+    display: flex;
+  }
+
+  /* El menú se esconde y aparece como panel debajo de la barra */
+  .menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: var(--crema);
+    padding: 8px 6% 24px;
+    box-shadow: 0 10px 20px rgba(59, 50, 43, 0.08);
+  }
+
+  .nav.abierto .menu {
+    display: block;
+  }
+
+  .menu > ul {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+  }
+
+  .menu > ul > li > a {
+    display: block;
+    padding: 14px 0;
+    border-bottom: 1px solid var(--arena);
+  }
+
+  .desplegable {
+    padding: 0;
+  }
+
+  /* En celular el submenú se muestra siempre, debajo de "Productos" */
+  .submenu {
+    position: static;
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+    background: none;
+    box-shadow: none;
+    padding: 4px 0 8px 16px;
+    min-width: 0;
+  }
+
+  .desplegable:hover .submenu,
+  .desplegable:focus-within .submenu {
+    transform: none;
+  }
+
+  .submenu a {
+    padding: 8px 0;
+  }
+
+  .submenu a:hover {
+    background: none;
+  }
+
+  .submenu .ver-todos {
+    border-top: none;
+    margin-top: 0;
+    padding-top: 8px;
+  }
+
+  .flecha {
+    display: none;
+  }
+}
